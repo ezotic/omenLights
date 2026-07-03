@@ -1,0 +1,15 @@
+# HP OMEN "TracerLED" lighting controller (OMEN 30L desktop and friends)
+# USB 103c:84fd exposes a hidraw node that is root-only by default.
+# This rule hands access to the logged-in (seat) user via systemd-logind (uaccess),
+# and also relaxes the group mode as a fallback for non-logind setups.
+#
+# Install:
+#   sudo cp udev/70-omen-tracerled.rules /etc/udev/rules.d/
+#   sudo udevadm control --reload
+#   sudo udevadm trigger
+# Then replug or reboot is NOT needed; the running hidraw node is re-tagged.
+
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="103c", ATTRS{idProduct}=="84fd", MODE="0660", TAG+="uaccess"
+
+# Fallback: also match the usb device node itself (libusb path), harmless if unused.
+SUBSYSTEM=="usb", ATTRS{idVendor}=="103c", ATTRS{idProduct}=="84fd", MODE="0660", TAG+="uaccess"

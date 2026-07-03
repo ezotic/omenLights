@@ -1,0 +1,5 @@
+[console_scripts]
+omenlights = omenlights.cli:main
+
+[gui_scripts]
+omenlights-gui = omenlights.gui.app:main

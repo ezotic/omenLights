@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "omenlights"
+version = "0.1.0"
+description = "Linux clone of HP OMEN Light Studio for the OMEN 30L 'TracerLED' (103c:84fd) USB controller"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "ezotic" }]
+dependencies = [
+    "hidapi>=0.14",   # python binding for the system hidapi C library
+    "typer>=0.12",    # CLI
+]
+
+[project.optional-dependencies]
+gui = ["PySide6>=6.6"]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+omenlights = "omenlights.cli:main"
+
+[project.gui-scripts]
+omenlights-gui = "omenlights.gui.app:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
