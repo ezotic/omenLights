@@ -1,6 +1,6 @@
 # OmenLights
 
-A Linux clone of **HP OMEN Light Studio** for controlling the RGB lighting on
+A ArchLinux clone of **HP OMEN Light Studio** for controlling the RGB lighting on
 HP OMEN desktops (built and tested against an **OMEN 30L GT13**).
 
 HP ships Light Studio only for Windows. On these desktops the lighting is **not**
